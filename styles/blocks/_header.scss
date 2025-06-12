@@ -1,0 +1,114 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+
+  font-size: 1.25em;
+  margin-bottom: 70px; // Не по БЭМ
+  gap: 40px;
+  background-color: #fff;
+
+  &__logo {
+    flex: 1 0 auto;
+
+    @media (max-width: $bp3) {
+      width: clamp(5%, 15%, 20%);
+    }
+
+    @media (max-width: $bp4) {
+      flex: 0 0 auto;
+      position: relative;
+      z-index: 100;
+      width: 37%;
+    }
+  }
+
+  &__image {
+    object-fit: contain;
+    height: auto;
+  }
+
+  &__navigation {
+    transition: all 0.6s;
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    @media (max-width: $bp2) {
+      background-color: var(--color-white);
+      border: 1px solid var(--color-dark);
+      top: 100px;
+      position: absolute;
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: start;
+      border-radius: 8px;
+      padding: 30px;
+      right: -500px;
+    }
+  }
+
+  &__navigation.open {
+    transform: translateX(-515px);
+  }
+
+  &__list {
+    display: flex;
+    gap: 40px;
+    @media (max-width: $bp2) {
+      flex-flow: column nowrap;
+    }
+  }
+
+  &__element a {
+    text-decoration: none;
+    color: var(--color-black);
+
+    padding-block: 8px;
+    position: relative;
+
+    @media (max-width: $bp1) {
+      font-size: 1em;
+      margin-top: 45px;
+    }
+
+    @media (max-width: $bp2) {
+      align-items: start;
+    }
+
+    @media (max-width: $bp3) {
+      font-size: 1rem;
+      margin-top: 30px;
+      gap: 20px;
+    }
+
+    @media (max-width: $bp4) {
+      align-items: center;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 5px;
+      background-color: var(--color-dark);
+      border-radius: 10px;
+
+      transition: width 500ms ease;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+
+    &:active {
+      color: var(--color-green);
+    }
+  }
+}
